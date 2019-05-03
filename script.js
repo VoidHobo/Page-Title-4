@@ -18,6 +18,13 @@ function show(selector){
 var F=new Function(makeShow(selector));
 return(F());
 }
+function click(selector,func){
+var exec = "$('."+selector+"').click(function(){"
+    +func+"});";
+    var F=new Function(exec);
+return(F());
+}
+
 
 $(".img1").click(function(){
     hide('img1');
@@ -43,6 +50,9 @@ $(".img5").click(function(){
     $(".img5").hide();
     $("body").css("background","yellow");
 });
+click('img1', makeHide('img2'));
+click('img1', makeShow('img2'));
+
  
  
  
